@@ -6,4 +6,6 @@ import TrainingjavaSpring.boot.fan.dto.response.FanResponse;
 public interface FanService {
 
     FanResponse create (FanRequest request);
+
+    FanResponse getById(String id);
 }

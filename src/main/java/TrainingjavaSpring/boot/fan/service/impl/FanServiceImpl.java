@@ -8,6 +8,8 @@ import TrainingjavaSpring.boot.fan.service.FanService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 import static TrainingjavaSpring.boot.fan.service.mapping.FanMappingService.convertDtoToEntity;
 import static TrainingjavaSpring.boot.fan.service.mapping.FanMappingService.convertEntityToFanResponse;
 
@@ -28,6 +30,21 @@ public class FanServiceImpl implements FanService {
         entity = fanRepository.save(entity);
         FanResponse response = convertEntityToFanResponse(entity);
         log.info(" === Finish api create new fan, Fan Id : {} === ", response.getId());
+        return response;
+    }
+
+    @Override
+    public FanResponse getById(String id) {
+        log.info(" === Start api getById fan === ");
+        log.info("=== String id {} : === " , id);
+        Optional<FanEntity> optionalFanEntity = fanRepository.findById(id);
+        if (!optionalFanEntity.isPresent()){
+            throw  new RuntimeException();
+        }
+        FanEntity entity= optionalFanEntity.get();
+        entity = fanRepository.save(entity);
+        FanResponse response = convertEntityToFanResponse(entity);
+        log.info(" === Finish api getById fan, Fan Id : {} ===", response.getId());
         return response;
     }
 }
