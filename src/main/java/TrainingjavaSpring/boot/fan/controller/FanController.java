@@ -43,4 +43,12 @@ public class FanController {
         log.info(" === Finish api update fan, Fan Id : {} === ", response.getId());
         return response;
     }
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteById(@PathVariable ("id") String id){
+        log.info(" === Start api deleteById fan === ");
+        log.info(" === String id : {} === ", id);
+        log.info(" Finish api deleteById fan, Fan id : {} === ");
+        service.deleteById(id);
+    }
 }
