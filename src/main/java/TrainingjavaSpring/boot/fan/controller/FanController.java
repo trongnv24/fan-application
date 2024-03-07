@@ -34,4 +34,13 @@ public class FanController {
         log.info(" === Finish api getById fan, Fan Id : {} ====", response.getId());
         return response;
     }
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public FanResponse update(@RequestBody FanRequest request, @PathVariable("id") String id){
+        log.info(" === Start api update fan === ");
+        log.info(" === Request Body : {}, String id : {} ", request, id);
+        FanResponse response = service.update(request, id);
+        log.info(" === Finish api update fan, Fan Id : {} === ", response.getId());
+        return response;
+    }
 }

@@ -8,4 +8,6 @@ public interface FanService {
     FanResponse create (FanRequest request);
 
     FanResponse getById(String id);
+
+    FanResponse update(FanRequest request , String id);
 }

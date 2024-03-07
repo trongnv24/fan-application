@@ -9,7 +9,6 @@ public class FanMappingService {
     public static FanEntity convertDtoToEntity (FanRequest dto){
         FanEntity fanEntity = new FanEntity();
         fanEntity.setName(dto.getName());
-        fanEntity.setManufacturer(dto.getManufacturer());
         fanEntity.setType(dto.getType());
         fanEntity.setWattage(dto.getWattage());
         fanEntity.setColor(dto.getColor());
@@ -20,7 +19,6 @@ public class FanMappingService {
         FanResponse dto = new FanResponse();
         dto.setId(entity.getId());
         dto.setName(entity.getName());
-        dto.setManufacturer(entity.getManufacturer());
         dto.setType(entity.getType());
         dto.setWattage(entity.getWattage());
         dto.setColor(entity.getColor());

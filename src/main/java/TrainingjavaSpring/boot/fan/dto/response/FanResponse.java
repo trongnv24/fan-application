@@ -21,7 +21,6 @@ public class FanResponse extends FanRequest {
         return "FanResponse{" +
                 "id='" + id + '\'' +
                 ", name='" + getName() + '\'' +
-                ", manufacturer='" + getManufacturer() + '\'' +
                 ", type='" + getType() + '\'' +
                 ", wattage=" + getWattage() +
                 ", color='" + getColor() + '\'' +
