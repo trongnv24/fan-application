@@ -47,4 +47,24 @@ public class FanServiceImpl implements FanService {
         log.info(" === Finish api getById fan, Fan Id : {} ===", response.getId());
         return response;
     }
+
+    @Override
+    public FanResponse update(FanRequest request, String id) {
+        log.info(" === Start api update fan === ");
+        log.info(" === Request Body : {}, String id : {}  === ", request, id);
+        Optional<FanEntity> optionalFanEntity = fanRepository.findById(id);
+        if (!optionalFanEntity.isPresent()){
+            throw new RuntimeException();
+        }
+        FanEntity entity = optionalFanEntity.get();
+        entity.setName(request.getName());
+        entity.setWattage(request.getWattage());
+        entity.setColor(request.getColor());
+        entity.setPrice(request.getPrice());
+        entity.setType(request.getType());
+        entity = fanRepository.save(entity);
+        FanResponse response = convertEntityToFanResponse(entity);
+        log.info(" === Finish api update fan, Fan Id : {} === ", response.getId());
+        return response;
+    }
 }

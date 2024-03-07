@@ -2,7 +2,6 @@ package TrainingjavaSpring.boot.fan.dto.request;
 
 public class FanRequest {
     private String name;
-    private String manufacturer;
     private String type;
     private float wattage;
     private String color;
@@ -17,14 +16,6 @@ public class FanRequest {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getManufacturer() {
-        return manufacturer;
-    }
-
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
     }
 
     public String getType() {
@@ -63,7 +54,6 @@ public class FanRequest {
     public String toString() {
         return "FanRequest{" +
                 "name='" + name + '\'' +
-                ", manufacturer='" + manufacturer + '\'' +
                 ", type='" + type + '\'' +
                 ", wattage=" + wattage +
                 ", color='" + color + '\'' +
