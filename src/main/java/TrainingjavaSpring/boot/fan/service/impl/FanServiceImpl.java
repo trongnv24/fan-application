@@ -67,4 +67,15 @@ public class FanServiceImpl implements FanService {
         log.info(" === Finish api update fan, Fan Id : {} === ", response.getId());
         return response;
     }
+    @Override
+    public void deleteById( String id){
+        log.info(" === Start api deleteById === ");
+        log.info(" === String id : {} === ", id);
+        Optional<FanEntity> optionalFanEntity = fanRepository.findById(id);
+        if (!optionalFanEntity.isPresent()){
+            throw new RuntimeException();
+        }
+        log.info(" === Finish api deleteById fan, Fan Id : {} === ");
+        fanRepository.deleteById(id);
+    }
 }

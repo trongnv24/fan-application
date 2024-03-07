@@ -10,4 +10,6 @@ public interface FanService {
     FanResponse getById(String id);
 
     FanResponse update(FanRequest request , String id);
+
+    void deleteById(String id);
 }
