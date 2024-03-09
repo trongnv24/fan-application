@@ -2,9 +2,11 @@ package TrainingjavaSpring.boot.fan.controller;
 
 import TrainingjavaSpring.boot.fan.dto.request.FanRequest;
 import TrainingjavaSpring.boot.fan.dto.response.FanResponse;
+import TrainingjavaSpring.boot.fan.exeption.NotFoundException;
 import TrainingjavaSpring.boot.fan.service.FanService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -27,12 +29,12 @@ public class FanController {
     }
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public FanResponse getById(@PathVariable ("id") String id){
+    public ResponseEntity<?> getById(@PathVariable ("id") String id){
         log.info(" === Start api getById fan  === ");
         log.info(" === String id : {} === ", id);
         FanResponse response = service.getById(id);
         log.info(" === Finish api getById fan, Fan Id : {} ====", response.getId());
-        return response;
+        return new ResponseEntity<>(HttpStatus.OK);
     }
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)

@@ -3,6 +3,7 @@ package TrainingjavaSpring.boot.fan.service.impl;
 import TrainingjavaSpring.boot.fan.dto.request.FanRequest;
 import TrainingjavaSpring.boot.fan.dto.response.FanResponse;
 import TrainingjavaSpring.boot.fan.entity.FanEntity;
+import TrainingjavaSpring.boot.fan.exeption.NotFoundException;
 import TrainingjavaSpring.boot.fan.repository.FanRepository;
 import TrainingjavaSpring.boot.fan.service.FanService;
 import lombok.extern.slf4j.Slf4j;
@@ -39,7 +40,7 @@ public class FanServiceImpl implements FanService {
         log.info("=== String id {} : === " , id);
         Optional<FanEntity> optionalFanEntity = fanRepository.findById(id);
         if (!optionalFanEntity.isPresent()){
-            throw  new RuntimeException();
+            throw new NotFoundException(" không tìm thấy ", id, null );
         }
         FanEntity entity= optionalFanEntity.get();
         entity = fanRepository.save(entity);
